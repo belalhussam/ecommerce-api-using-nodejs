@@ -19,21 +19,21 @@ exports.resizeImage = asyncHandler(async (req, res, next) => {
   req.body.profileImg = filename;
   next();
 });
-// @desc    Get list of brands
-// @route   GET /api/v1/brands
+// @desc    Get list of user
+// @route   GET /api/v1/user
 // @access  Public
 exports.getUsers = factory.getAll(User);
-// @desc    Get specific brand by id
-// @route   GET /api/v1/brands/:id
+// @desc    Get specific user by id
+// @route   GET /api/v1/user/:id
 // @access  Public
 exports.getUser = factory.getOne(User);
 
-// @desc    Create brand
-// @route   POST  /api/v1/brands
+// @desc    Create user
+// @route   POST  /api/v1/user
 // @access  Private
 exports.createUser = factory.createOne(User);
-// @desc    Update specific brand
-// @route   PUT /api/v1/brands/:id
+// @desc    Update specific user
+// @route   PUT /api/v1/user/:id
 // @access  Private
 exports.updateUser = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
@@ -63,7 +63,7 @@ exports.changePassword = asyncHandler(async (req, res, next) => {
   }
   res.status(200).json({ data: document });
 });
-// @desc    Delete specific brand
-// @route   DELETE /api/v1/brands/:id
+// @desc    Delete specific user
+// @route   DELETE /api/v1/user/:id
 // @access  Private
 exports.deleteUser = factory.deleteOne(User);

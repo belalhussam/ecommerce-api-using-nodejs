@@ -17,6 +17,9 @@ const {
   uploadUserImage,
   changePassword,
 } = require("../services/userSrevices");
+const authServices = require("../services/authServices");
+
+router.use(authServices.protect, authServices.allowedTo("admin", "manger"));
 router
   .route("/")
   .get(getUsers)
@@ -29,4 +32,5 @@ router
 router
   .route("/changePassword/:id")
   .put(changeUserPasswordValidator, changePassword);
+
 module.exports = router;
