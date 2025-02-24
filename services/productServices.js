@@ -35,25 +35,25 @@ exports.resizeProductImage = asyncHandler(async (req, res, next) => {
   }
   next();
 });
-// @desc    Get list of brands
-// @route   GET /api/v1/brands
+// @desc    Get list of product
+// @route   GET /api/v1/product
 // @access  Public
 exports.getProducts = factory.getAll(Product, "Product");
-// @desc    Get specific brand by id
-// @route   GET /api/v1/brands/:id
+// @desc    Get specific product by id
+// @route   GET /api/v1/product/:id
 // @access  Public
 exports.getProduct = factory.getOne(Product);
 
-// @desc    Create brand
-// @route   POST  /api/v1/brands
+// @desc    Create product
+// @route   POST  /api/v1/product
 // @access  Private
 exports.createProduct = factory.createOne(Product);
 
-// @desc    Update specific brand
-// @route   PUT /api/v1/brands/:id
+// @desc    Update specific product
+// @route   PUT /api/v1/product/:id
 // @access  Private
 exports.updateProduct = factory.updateOne(Product);
-// @desc    Delete specific brand
-// @route   DELETE /api/v1/brands/:id
+// @desc    Delete specific product
+// @route   DELETE /api/v1/product/:id
 // @access  Private
 exports.deleteProduct = factory.deleteOne(Product);
