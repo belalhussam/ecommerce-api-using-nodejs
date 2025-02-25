@@ -35,6 +35,7 @@ exports.resizeProductImage = asyncHandler(async (req, res, next) => {
   }
   next();
 });
+
 // @desc    Get list of product
 // @route   GET /api/v1/product
 // @access  Public

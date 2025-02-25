@@ -10,6 +10,9 @@ exports.deleteOne = (Model) =>
     if (!document) {
       return next(new ApiError(`No document for this id ${id}`, 404));
     }
+
+    // Trigger "deleteOne" event when update document
+    await document.deleteOne();
     res.status(204).send();
   });
 
@@ -24,6 +27,8 @@ exports.updateOne = (Model) =>
         new ApiError(`No document for this id ${req.params.id}`, 404)
       );
     }
+    // Trigger "save" event when update document
+    await document.save();
     res.status(200).json({ data: document });
   });
 

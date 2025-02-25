@@ -11,6 +11,8 @@ const productRoute = require("./routes/productRoutes");
 const userRoute = require("./routes/userRoutes");
 const authRoute = require("./routes/authRoutes");
 const reviewRoute = require("./routes/reviewRoutes");
+const wishlistRoute = require("./routes/whishlistRoutes");
+const addresseRoute = require("./routes/addresseRoute");
 require("dotenv").config({ path: "config.env" });
 const path = require("path");
 // Middlewares
@@ -26,6 +28,8 @@ app.use("/api/v1/product", productRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/review", reviewRoute);
+app.use("/api/v1/wishlist", wishlistRoute);
+app.use("/api/v1/address", addresseRoute);
 app.all("*", (req, res, next) => {
   next(new ApiError(`Can't find this route: ${req.originalUrl}`, 400));
 });
