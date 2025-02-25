@@ -10,6 +10,7 @@ const brandRoute = require("./routes/brandRoutes");
 const productRoute = require("./routes/productRoutes");
 const userRoute = require("./routes/userRoutes");
 const authRoute = require("./routes/authRoutes");
+const reviewRoute = require("./routes/reviewRoutes");
 require("dotenv").config({ path: "config.env" });
 const path = require("path");
 // Middlewares
@@ -24,6 +25,7 @@ app.use("/api/v1/brand", brandRoute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/review", reviewRoute);
 app.all("*", (req, res, next) => {
   next(new ApiError(`Can't find this route: ${req.originalUrl}`, 400));
 });
