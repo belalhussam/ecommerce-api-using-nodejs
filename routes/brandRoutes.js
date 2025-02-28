@@ -16,7 +16,6 @@ const {
 } = require("../services/brandServices");
 const authServices = require("../services/authServices");
 const router = express.Router();
-
 router
   .route("/")
   .get(getBrands)
