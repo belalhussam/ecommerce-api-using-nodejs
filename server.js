@@ -1,5 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
+const compression = require("compression");
 const dbConnetion = require("./config/db");
 const ApiError = require("./utils/apiError");
 const globalError = require("./middlewares/errorMiddleware");
@@ -10,6 +12,9 @@ const path = require("path");
 // Middlewares
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "uploads")));
+app.use(cors());
+app.options("*", cors());
+app.use(compression());
 // Connect with db
 dbConnetion();
 // Mount Routes
