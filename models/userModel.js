@@ -64,5 +64,5 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
-const userModel = mongoose.model("user", userSchema);
+const userModel = mongoose.model("User", userSchema);
 module.exports = userModel;
