@@ -1,46 +1,46 @@
-const express = require("express");
+const express = require('express')
 const {
-  getReviews,
-  getReview,
-  createReview,
-  updateReview,
-  deleteReview,
-  createfilterObj,
-  setProductIdBody,
-} = require("../services/reviewServices");
-const {
-  getReviewValidator,
-  createReviewValidator,
-  updateReviewValidator,
-  deleteReviewValidator,
-} = require("../utils/validator/reviewValidator");
-const authServices = require("../services/authServices");
-const router = express.Router({ mergeParams: true });
-
-router
-  .route("/")
-  .get(createfilterObj, getReviews)
-  .post(
-    authServices.protect,
-    authServices.allowedTo("user"),
+    getReviews,
+    getReview,
+    createReview,
+    updateReview,
+    deleteReview,
+    createfilterObj,
     setProductIdBody,
+} = require('../services/reviewServices')
+const {
+    getReviewValidator,
     createReviewValidator,
-    createReview
-  );
-router
-  .route("/:id")
-  .get(getReviewValidator, getReview)
-  .put(
-    authServices.protect,
-    authServices.allowedTo("user"),
     updateReviewValidator,
-    updateReview
-  )
-  .delete(
-    authServices.protect,
-    authServices.allowedTo("user", "manger", "admin"),
     deleteReviewValidator,
-    deleteReview
-  );
+} = require('../utils/validator/reviewValidator')
+const authServices = require('../services/authServices')
+const router = express.Router({ mergeParams: true })
 
-module.exports = router;
+router
+    .route('/')
+    .get(createfilterObj, getReviews)
+    .post(
+        authServices.protect,
+        authServices.allowedTo('user'),
+        setProductIdBody,
+        createReviewValidator,
+        createReview
+    )
+router
+    .route('/:id')
+    .get(getReviewValidator, getReview)
+    .put(
+        authServices.protect,
+        authServices.allowedTo('user'),
+        updateReviewValidator,
+        updateReview
+    )
+    .delete(
+        authServices.protect,
+        authServices.allowedTo('user', 'manger', 'admin'),
+        deleteReviewValidator,
+        deleteReview
+    )
+
+module.exports = router
