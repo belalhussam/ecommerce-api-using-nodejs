@@ -34,7 +34,7 @@ app.all("*", (req, res, next) => {
   next(new ApiError(`Can't find this route: ${req.originalUrl}`, 400));
 });
 
-if (process.env.NODEENV == "development") {
+if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
   console.log(`mode :${process.env.NODE_ENV}`);
 }
